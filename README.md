@@ -14,5 +14,5 @@
 
 5. Once you have code repository folders avaialble in Cloud Source Repository you can follow steps mentioned in 'cloudbuild_readme.md' to create build trigger to perform deployment on AppEngine.
 
-6. Please dont change or update cloudbuild.yaml, cloudbuild.yaml and app.yaml.
+6. Please dont change or update cloudbuild-feature.yaml, cloudbuild.yaml and app.yaml.
 </p>
