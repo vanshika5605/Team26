@@ -6,18 +6,7 @@ This README documents the manual process used to configure Cloud Build to build 
 - A GCP project to house the deployed application has been created.
 
 ## Steps
-1. Go to __Cloud Build__, enabling the 'Cloud Build API' if prompted to do so.
-2. Search for 'App Engine Admin API' (under 'Marketplace') and navigate to the page, enabling the API.
-4. Go to __IAM & Admin__ and add the following roles to the project's Cloud Build service account by clicking the pencil 'Edit Principal' icon and clicking 'Add another role':
-   * App Engine Service Admin
-   * App Engine Deployer
-   * Service Account User roles
-5. Open Cloud Shell (icon pictured below) and input the following to create the application in App Engine in an appropriate location, authorizing the API call if required.<br>
-   ![cloud shell icon](cloud_shell.png)
-   ```
-   gcloud app create
-   ```
-6. Go back to __Cloud Build__ and add triggers for main and feature builds
+Go to __Cloud Build__ and add triggers for main and feature builds
    1. Go to the 'Triggers' section and click 'Connect Repository'
    2. Leave 'Select source' as default selection (GitHub (Cloud Build GitHub App) and authenticate, select the target repository from the dropdown menu and click 'Connect'
    3. Click 'Create a Trigger'

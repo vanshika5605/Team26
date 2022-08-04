@@ -1,7 +1,9 @@
 # Bonds Appplication
 
 ## Steps
-<pre>
+
+<p>
+
 1. Download/clone code from https://github.com/JDSSam/arrakis
 
 2. These are skeleton projects will help to build and deploy your code to GCP. 
@@ -13,4 +15,4 @@
 5. Once you have code repository folders avaialble in Cloud Source Repository you can follow steps mentioned in 'cloudbuild_readme.md' to create build trigger to perform deployment on AppEngine.
 
 6. Please dont change or update cloudbuild.yaml, cloudbuild.yaml and app.yaml.
-</pre>
+</p>
