@@ -2,7 +2,7 @@
 
 ## Steps
 <pre>
-1. Download/git code from https://github.com/JDSSam/arrakis
+1. Download/clone code from https://github.com/JDSSam/arrakis
 
 2. These are skeleton projects will help to build and deploy your code to GCP. 
 
