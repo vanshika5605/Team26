@@ -15,6 +15,7 @@
 steps:
   - name: maven:3-jdk-8
     entrypoint: mvn
+    dir: 'java-api'
     args: ["test"]
     
 timeout: "1600s"
