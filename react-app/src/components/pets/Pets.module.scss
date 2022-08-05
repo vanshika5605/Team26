@@ -1,6 +1,23 @@
 .pets {
     margin:20px 100px 20px 100px;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    // justify-content: center;
+    background-color: rgb(49, 115, 230);
+    flex-wrap: wrap;
+    border:  2px;
+    border-radius: 5px;
+    
+}
+
+.elements{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    
+    flex-wrap: wrap;
+    color: aliceblue;
+    
+    
+
+    
 }

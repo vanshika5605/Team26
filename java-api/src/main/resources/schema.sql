@@ -5,3 +5,32 @@ id INT NOT NULL,
 name VARCHAR(250) NOT NULL,
 age INT NOT NULL
 );
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+id INT NOT NULL,
+name VARCHAR(250) NOT NULL,
+email VARCHAR(250) NOT NULL,
+role VARCHAR(250) NOT NULL
+);
+
+
+DROP TABLE IF EXISTS securities;
+CREATE TABLE securities (
+id INT NOT NULL,
+isin INT NOT NULL,
+cusip INT NOT NULL,
+issuer VARCHAR(250) NOT NULL,
+maturitydate DATE NOT NULL,
+coupon INT NOT NULL,
+type VARCHAR(250) NOT NULL,
+facevalue INT NOT NULL,
+status VARCHAR(250) NOT NULL
+
+
+);
+
+
+
+
+
