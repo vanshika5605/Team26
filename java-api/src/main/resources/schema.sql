@@ -1,12 +1,17 @@
 DROP TABLE IF EXISTS dogs;
-  
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS securities;
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS counterparties;
+DROP TABLE IF EXISTS trades;
+
 CREATE TABLE dogs (
 id INT NOT NULL,
 name VARCHAR(250) NOT NULL,
 age INT NOT NULL
 );
 
-DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
 id INT NOT NULL,
 name VARCHAR(250) NOT NULL,
@@ -15,7 +20,7 @@ role VARCHAR(250) NOT NULL
 );
 
 
-DROP TABLE IF EXISTS securities;
+
 CREATE TABLE securities (
 id INT NOT NULL,
 isin INT NOT NULL,
@@ -30,6 +35,33 @@ status VARCHAR(250) NOT NULL
 
 );
 
+CREATE TABLE books (
+id INT NOT NULL,
+bookname VARCHAR(250) NOT NULL
+)
+
+
+CREATE TABLE counterparties (
+id INT NOT NULL,
+name VARCHAR(250) NOT NULL
+)
+
+
+CREATE TABLE trades (
+id INT NOT NULL,
+book_id INT NOT NULL,
+counterparty_id INT NOT NULL,
+security_id INT NOT NULL,
+quantity INT NOT NULL,
+status VARCHAR(250) NOT NULL,
+price INT NOT NULL,
+buysell VARCHAR(250) NOT NULL,
+tradedate DATE NOT NULL,
+settlementdate DATE NOT NULL,
+FOREIGN KEY (book_id) REFERENCES books(id),
+FOREIGN KEY (counterparty_id) REFERENCES counterparties(id),
+FOREIGN KEY (security_id) REFERENCES securities(id),
+)
 
 
 

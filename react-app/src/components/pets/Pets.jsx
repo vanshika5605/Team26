@@ -40,7 +40,7 @@ export const Pets = () => {
                 </div>
 
                 <div className={styles.elements}>
-                  <div>MATUARITY: </div>
+                  <div>MATURITY: </div>
                 <div>{pet.maturitydate.slice(0,10)}</div>
                 </div>
 
