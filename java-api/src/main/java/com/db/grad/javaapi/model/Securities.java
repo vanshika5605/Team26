@@ -77,7 +77,7 @@ public class Securities {
         this.issuer = issuer;
     }
 
-     @Column(name = "maturitydate", nullable = false)
+    @Column(name = "maturitydate", nullable = false)
     public Date getMaturitydate() {
         return maturitydate;
     }
@@ -86,7 +86,7 @@ public class Securities {
     }
 
 
-     @Column(name = "coupon", nullable = false)
+    @Column(name = "coupon", nullable = false)
     public long getCoupon() {
         return coupon;
     }
@@ -94,7 +94,7 @@ public class Securities {
         this.coupon = coupon;
     }
 
-     @Column(name = "type", nullable = false)
+    @Column(name = "type", nullable = false)
     public String getType() {
         return type;
     }
@@ -102,7 +102,7 @@ public class Securities {
         this.type = type;
     }
 
-     @Column(name = "facevalue", nullable = false)
+    @Column(name = "facevalue", nullable = false)
     public long getFacevalue() {
         return facevalue;
     }
@@ -110,7 +110,7 @@ public class Securities {
         this.facevalue = facevalue;
     }
 
-     @Column(name = "status", nullable = false)
+     //@Column(name = "status", nullable = false)
     public String getStatus() {
         return status;
     }

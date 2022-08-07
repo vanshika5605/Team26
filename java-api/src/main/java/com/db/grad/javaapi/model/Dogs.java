@@ -24,7 +24,7 @@ public class Dogs {
 
     }
 
-    @Id
+    //@Id
     public long getId() {
         return id;
     }
@@ -32,7 +32,7 @@ public class Dogs {
         this.id = id;
     }
     
-    @Column(name = "name", nullable = false)
+    //@Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -40,7 +40,7 @@ public class Dogs {
         this.name = name;
     }
 
-    @Column(name = "age", nullable = false)
+    //@Column(name = "age", nullable = false)
     public long getAge() {
         return age;
     }
