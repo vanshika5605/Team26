@@ -1,7 +1,9 @@
 package com.db.grad.javaapi.controller;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.validation.Valid;
-
+import java.text.SimpleDateFormat; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +21,10 @@ import com.db.grad.javaapi.model.Trades;
 import com.db.grad.javaapi.repository.SecuritiesRepository;
 import com.db.grad.javaapi.repository.TradesRepository;
 
+import com.db.grad.javaapi.repository.BooksRepository;
+import com.db.grad.javaapi.repository.CounterpartiesRepository;
+import java.util.*;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v2")
@@ -28,6 +34,18 @@ public class TradesController {
 	
 	@Autowired
 	private SecuritiesRepository securitiesRepository;
+
+	@Autowired
+	private BooksRepository booksRepository;
+	@Autowired
+	private CounterpartiesRepository counterpartiesRepository;
+
+
+	  @GetMapping("/alltrades")
+    public List < Trades > getAllTrades() {
+        List < Trades > trade = tradesRepository.findAll();
+         return trade;
+    }
 	
 //	Get trade by ID
 	@GetMapping("/trades/{id}")
@@ -49,10 +67,53 @@ public class TradesController {
 	}
 	
 //	Create and update a trade
-	@PostMapping("/trades")
-	public Trades createTrade(@Valid @RequestBody Trades trades) {
-		return tradesRepository.saveAndFlush(trades);
+	@PostMapping("/trades/{id}/{bid}/{sid}/{cid}/{quantity}/{status}/{price}/{buysell}/{tradedate}/{settlementdate}")
+	public Trades createTrade(@PathVariable(value = "id") Long id,@PathVariable(value = "bid") Long bid,@PathVariable(value = "sid") Long sid,@PathVariable(value = "cid") Long cid,
+	@PathVariable(value = "quantity") int quantity,@PathVariable(value = "status") String status,
+	@PathVariable(value = "price") Long price,@PathVariable(value = "buysell") String buysell,@PathVariable(value = "tradedate") String tradedate,
+	@PathVariable(value = "settlementdate")String settlementdate) throws ResourceNotFoundException,Exception{
+
+
+		Trades trade = new Trades();
+		trade.id=id;
+		Date d1=new SimpleDateFormat("yyyy-MM-dd").parse(tradedate);
+		Date d2=new SimpleDateFormat("yyyy-MM-dd").parse(settlementdate);
+		trade.security = securitiesRepository.findById(sid)
+            .orElseThrow(() -> new ResourceNotFoundException("security not found for this id :: " + sid));
+		
+		trade.quantity=quantity;
+		trade.status=status;
+		trade.price=price;
+		trade.buysell=buysell;
+		trade.tradedate=d1;
+		trade.settlementdate=d2;
+
+		trade.book = booksRepository.findById(bid)
+            .orElseThrow(() -> new ResourceNotFoundException("security not found for this id :: " + bid));
+		
+		trade.counterparty = counterpartiesRepository.findById(cid)
+            .orElseThrow(() -> new ResourceNotFoundException("security not found for this id :: " + cid));
+		
+		
+
+
+
+
+
+
+		
+		return tradesRepository.saveAndFlush(trade);
+
+		// return trade;
 	}
+
+	// @PostMapping("/trades/{bid}/{cid}/{sid}")
+	// public Trades createTrade(@Valid @RequestBody Trades trades, @PathVariable(value="bid") Long bid, 
+	// 		@PathVariable(value="cid") Long cid, @PathVariable(value="sid") Long sid) {
+	// 	// trades.setSecurity(securitiesRepository.findById(sid));
+	// 	System.ou
+	// 	return tradesRepository.saveAndFlush(trades);
+	// }
 	
 	@PutMapping("/trades/{id}")
     public ResponseEntity < Trades > updateTrade(@PathVariable(value = "id") Long id,

@@ -20,26 +20,30 @@ import javax.persistence.Table;
 public class Trades {
 	
 	@Id
-	private long id;
+	public long id;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="book_id")
-	private Books book;
+	public Books book;
 	
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name="counterparty_id")
-	private Counterparties counterparty;
+	public Counterparties counterparty;
 	
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name="security_id")
-	private Securities security;
+	public Securities security;
 	
-	private long quantity;
-	private String status;
-	private long price;
-	private String buysell;
+	public long quantity;
+	public String status;
+	public long price;
+	public String buysell;
 	public Date tradedate;
 	public Date settlementdate;
+
+	public Trades(){
+		
+	}
 	
 	public Trades(long id, Books book, Counterparties counterparty, Securities security, long quantity, String status,
 			long price, String buysell, Date tradedate, Date settlementdate) {
